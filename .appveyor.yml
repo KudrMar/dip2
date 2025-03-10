@@ -8,17 +8,23 @@ branches:
 
 cache: node_modules  # кеширование
 
+init:
+  - export HOME=/home/appveyor
+  - mkdir -p "$HOME/.git-credentials"
+
 install:
   - npm install  # команда установки зависимостей
+  - npm install gh-pages --save-dev  # установка gh-pages
 
 build: off  # отключаем встроенную в appveyor систему сборки
 
 build_script:
   - npm run build   # команда сборки
+  - ls -la dist # Проверка содержимого папки dist
 
 deploy_script:  # скрипт развёртывания
   - git config --global credential.helper store
   - git config --global user.name AppVeyor
   - git config --global user.email ci@appveyor.com
   - echo "https://$GITHUB_TOKEN:x-oauth-basic@github.com" > "$HOME/.git-credentials"
-  - npx push-dir --dir=dist --branch=gh-pages --force --verbose
+  - npm run deploy  # использование gh-pages для деплоя
