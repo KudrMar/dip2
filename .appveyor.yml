@@ -20,7 +20,7 @@ build: off  # отключаем встроенную в appveyor систему
 
 build_script:
   - npm run build   # команда сборки
-  - ls -la dist # Проверка содержимого папки dist
+  - ls -la build   # Проверка содержимого папки dist
 
 deploy_script:  # скрипт развёртывания
   - git config --global credential.helper store
