@@ -1,5 +1,7 @@
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import StarRate from '../SuccessPage/StarRate';
 
 export default function SuccessPageMain() {
     const navigate = useNavigate();
@@ -9,6 +11,8 @@ export default function SuccessPageMain() {
         event.preventDefault();
         navigate('/');
     };
+
+    
     return (
         <div className="main-successPageMain">
             <div className="main-successPageMain-in">
@@ -61,13 +65,15 @@ export default function SuccessPageMain() {
                         <div className="main-successPageMain-rate-left">
                             <div className="main-successPageMain-rate-text">Оценить сервис
                             </div >
-                            <div className="main-successPageMain-rate-stars">
+                            <StarRate />
+                            {/* <div className="main-successPageMain-rate-stars">
                                 <div className="main-successPageMain-star-empty" data-value="1" key={1}/>
                                 <div className="main-successPageMain-star-empty" data-value="2" key={2}/>
                                 <div className="main-successPageMain-star-empty" data-value="3" key={3}/>
                                 <div className="main-successPageMain-star-empty" data-value="4" key={4}/>
                                 <div className="main-successPageMain-star-empty" data-value="5" key={5}/>
-                            </div >
+                                <StarRate />
+                            </div > */}
                         </div >
                         <button type="button" className="main-successPageMain-nextPage-button"
                          onClick={handleClickNextPage}

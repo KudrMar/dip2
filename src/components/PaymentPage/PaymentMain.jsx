@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback  } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { userChange } from '../Redux/passengers';
+import { InputMask } from "@react-input/mask";
 export default function PaymentMain() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -85,7 +86,7 @@ export default function PaymentMain() {
             newErrors.email = "Введите корректный email";
         }
 
-        if (!formData.phone || !/^\+7\d{10}$/.test(formData.phone)) {
+        if (!formData.phone || !/^\+7 \d{3} \d{3} \d{2} \d{2}$/.test(formData.phone)) {
             newErrors.phone = "Введите корректный телефон";
         }
 
@@ -144,12 +145,15 @@ export default function PaymentMain() {
                     <div className="main-Payment-tel main-Payment-40">
                         <div className="main-Payment-tel-label">Контактный телефон
                         </div>
-                        <input id="phone" className={"main-Payment-tel-input main-SelectPassengersMain-passengerCard-input" +
+                        <InputMask id="phone" className={"main-Payment-tel-input main-SelectPassengersMain-passengerCard-input" +
                         (errors.phone ? " cssErrorInput" : "" ) }
                         placeholder = "+7 ___ ___ __ __"
                         value={formData.phone}
+                        mask="+7 ___ ___ __ __"
+                        replacement={{ _: /\d/ }}
                         onChange={handleInputChange}>
-                        </input>
+                            
+                        </InputMask>
                     </div>
 
                     <div className="main-Payment-email main-Payment-40">

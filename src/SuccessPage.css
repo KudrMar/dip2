@@ -192,6 +192,17 @@ color: #292929;
   align-items: center;
 }
 
+
+.main-successPageMain-star-full {
+  width: 48px;
+  height: 48px;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-image: url(./img/lpFullStar.svg);
+  align-items: center;
+}
+
 .main-successPageMain-rate-stars {
   display: flex;
   flex-direction: row;
