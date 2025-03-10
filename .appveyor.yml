@@ -1,4 +1,4 @@
-image: Visual Studio 2022
+image: Ubuntu2204 # образ для сборки
 
 environment:
   nodejs_version: "20"
