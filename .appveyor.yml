@@ -10,7 +10,7 @@ cache: node_modules  # кеширование
 
 init:
   - export HOME=/home/appveyor
-  - mkdir -p "$HOME/.git-credentials"
+  #- mkdir -p "$HOME/.git-credentials"
 
 install:
   - npm install  # команда установки зависимостей
@@ -19,9 +19,10 @@ install:
 build: off  # отключаем встроенную в appveyor систему сборки
 
 build_script:
-  - npm run build   # команда сборки
-  - ls -la build   # Проверка содержимого папки dist
-
+  - npm run build
+  - mv build dist # Переименуйте папку build в dist
+  - ls -la dist # Проверка содержимого папки dist
+  
 deploy_script:  # скрипт развёртывания
   - git config --global credential.helper store
   - git config --global user.name AppVeyor
